@@ -1,3 +1,5 @@
+<app-criar-contato [formulario]="formulario" (emitter)="aoEnviar($event)"></app-criar-contato>
+
 <div class="panel panel-primary">
   <div class="panel-heading">
     <h2>Lista de Contatos</h2>
@@ -5,11 +7,17 @@
   <div class="panel-body">
     <table class="table table-striped">
       <thead>
-      <tr>
-        <th>Nome</th>
-        <th>Telefone</th>
-      </tr>
+        <tr>
+          <th>Nome</th>
+          <th>Telefone</th>
+        </tr>
       </thead>
+      <tbody>
+        <tr *ngFor="let item of listaDeContatos">
+          <td>{{item.nome}}</td>
+          <td>{{item.telefone}}</td>
+        </tr>
+      </tbody>
     </table>
   </div>
 </div>

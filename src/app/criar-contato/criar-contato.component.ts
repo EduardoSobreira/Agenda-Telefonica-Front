@@ -1,5 +1,4 @@
-  import { Component, OnInit } from '@angular/core';
-  import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 
 @Component({
@@ -9,20 +8,31 @@
 })
 export class CriarContatoComponent implements OnInit {
 
-    formulario: FormGroup;
+  @Input()
+  formulario: any;
 
-  constructor(private formBuilder: FormBuilder) {
+  @Output()
+  public emitter = new EventEmitter<any>();
 
-    this.formulario = this.formBuilder.group({
-      nome: [null],
-      telefone: [null]
-    })
+  constructor() {
+
   }
 
   ngOnInit(): void {
 
-
-
   }
 
+  enviar() {
+    if (this.formulario.get('telefone')?.invalid) { // TODO: Exemplos de validações
+      console.log("tem erro no campo telefone");
+    }
+
+    if (this.formulario.get('nomw')?.invalid) {
+      console.log("tem erro no campo nomw")
+    }
+
+    this.emitter.emit(true);
+
+    // TODO: atributo do campo formulario que devolve se o formulario está invalido. ler sobre Validators do Reactive Forms */
+  }
 }

@@ -7,6 +7,9 @@ import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [CriarContatoComponent],
+  exports: [
+    CriarContatoComponent
+  ],
   imports: [
     CommonModule,
     ReactiveFormsModule
